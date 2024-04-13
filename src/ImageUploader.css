@@ -1,0 +1,62 @@
+.image-uploader-container {
+    background-color: #2c2c2c;
+    padding: 20px;
+    border-radius: 10px;
+    color: #fff;
+    font-family: Arial, sans-serif;
+    max-width: 600px;
+    margin: 0 auto;
+    border: 1px solid #ccc; 
+}
+
+.upload-title {
+    font-size: 20px;
+    margin-bottom: 20px;
+}
+
+.input-container {
+    display: flex;
+    align-items: center;
+    justify-content: center; /* Add this line */
+    margin-bottom: 20px;
+
+}
+
+
+.input-container input[type="file"] {
+    display: none;
+}
+
+.preview-image {
+    max-width: 250px;
+    max-height: 250px;
+    border-radius: 5px;
+    margin-top: 10px;
+    cursor: pointer;
+    background-color: lightgray;
+}
+
+.preview-image:hover {
+    background-color: white;
+}
+
+.upload-button {
+    background-color: rgb(49, 49, 49);
+    color: #fff;
+    font-size: 15px;
+    padding: 15px 25px;
+    border: 1px solid #ccc;
+    border-radius: 20px;
+    cursor: pointer;
+}
+
+.upload-button:hover {
+    background-color: black;
+}
+
+
+.upload-message {
+    font-size: 14px;
+    margin-top: 10px;
+    color: #28a745;
+}
