@@ -1,6 +1,7 @@
-from flask import Flask, request
+from flask import Flask, request, send_from_directory, jsonify
 from flask_cors import CORS
 import os
+import time
 
 app = Flask(__name__)
 CORS(app)  # This will enable CORS for all routes
@@ -26,6 +27,21 @@ def upload_file():
     file.save(os.path.join('input_images', file.filename))
     
     return 'File uploaded successfully'
+
+@app.route('/convert', methods=['GET', 'POST'])
+def convert_to_3d():
+    print('Convert button clicked')  # Print statement for checking server-side
+    print('Converting...')
+    imageName = request.args.get('imageName')
+
+    time.sleep(5)  # Simulate a 5-second delay (replace with actual conversion process)
+
+    stl_filename = f"{imageName.split('.')[0]}.stl"
+    stl_path = os.path.join('output_stl', stl_filename)
+
+    if os.path.exists(stl_path):
+        return send_from_directory('output_stl', stl_filename)
+    
 
 if __name__ == '__main__':
     app.run(debug=True)
