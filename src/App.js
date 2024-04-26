@@ -7,14 +7,16 @@ function App() {
   const [stlUrl, setStlUrl] = useState(null);
 
   return (
-    <div className="App">
-      <h1>Image Uploader and 3D Viewer</h1>
-      <div className="container">
-        <div className="uploader">
-          <ImageUploader setStlUrl={setStlUrl}/>
-        </div>
-        <div className="viewer">
-          <STLViewerComponent stlUrl={stlUrl}/>
+    <div className="App"> 
+      <div className='main'>
+        <h1 className='heading'>Convert Single Image to 3D Model</h1>
+        <div className="container">
+          <div className="uploader">
+            <ImageUploader setStlUrl={setStlUrl}/>
+          </div>
+          <div className="viewer">
+            <STLViewerComponent stlUrl={stlUrl}/>
+          </div>
         </div>
       </div>
     </div>

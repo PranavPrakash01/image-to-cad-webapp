@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import './ImageUploader.css'; // Import CSS file
+import spinner from './spinner.gif'; 
 
 const placeholderImage = require('./placeholder.png');
 
@@ -9,6 +10,7 @@ const ImageUploader = ({ setStlUrl }) => {
   const [previewURL, setPreviewURL] = useState(placeholderImage);
   const [uploadMessage, setUploadMessage] = useState('');
   const [imageName, setImageName] = useState('');
+  const [isConverting, setIsConverting] = useState(false); // State to control spinner visibility
 
   const handleFileChange = (event) => {
     const file = event.target.files[0];
@@ -49,11 +51,32 @@ const ImageUploader = ({ setStlUrl }) => {
 
   const handleConvertButtonClick = async () => {
     try {
+      setIsConverting(true);
       setStlUrl(`http://localhost:5000/convert?imageName=${imageName}`);
+  
+      const pollConversionStatus = async () => {
+        try {
+          const response = await axios.get('http://localhost:5000/is_done');
+          console.log(response.data.done)
+          if (response.data.done) {
+            setIsConverting(false);
+          } else {
+            setTimeout(pollConversionStatus, 1000); // Poll again after 1 second
+          }
+        } catch (error) {
+          console.error('Error checking conversion status:', error);
+          //setIsConverting(false);
+        }
+      };
+  
+      pollConversionStatus();
     } catch (error) {
       console.error('Error converting to 3D:', error);
+      setIsConverting(false);
     }
   };
+  
+
 
   return (
     <div className="image-uploader-container">
@@ -65,6 +88,7 @@ const ImageUploader = ({ setStlUrl }) => {
       <button className="upload-button" onClick={handleSubmit}>Upload Image</button>
       <p className="upload-message">{uploadMessage}</p>
       <button className="convert-button" onClick={handleConvertButtonClick}>Convert To 3D</button>
+      {isConverting && <img src={spinner} alt="Spinner" className="spinner" />}
     </div>
   );
 };

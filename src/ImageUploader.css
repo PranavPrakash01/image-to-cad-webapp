@@ -1,13 +1,13 @@
 .image-uploader-container {
-    background-color: #2c2c2c;
     padding: 20px;
     border-radius: 10px;
-    color: #fff;
     font-family: Arial, sans-serif;
     width: 30vw;
     height: 60vh;
     margin: 0 auto;
-    border: 1px solid #ccc; 
+    border: 2px solid #ff6f00;
+    font-weight: 800;
+    background-color: white;
 }
 
 .upload-title {
@@ -34,7 +34,8 @@
     border-radius: 5px;
     margin-top: 10px;
     cursor: pointer;
-    background-color: lightgray;
+    background-color: rgb(250, 250, 206);
+    border: 1px solid orange;
 }
 
 .preview-image:hover {
@@ -42,17 +43,18 @@
 }
 
 .upload-button {
-    background-color: rgb(49, 49, 49);
-    color: #fff;
+    background-color: #ff6f00;
+    color: black;
+    font-weight: 800;
     font-size: 15px;
     padding: 15px 25px;
-    border: 1px solid #ccc;
+    border: 2px solid black;
     border-radius: 20px;
     cursor: pointer;
 }
 
 .upload-button:hover {
-    background-color: black;
+    background-color: #ff9442;
 }
 
 
@@ -63,15 +65,24 @@
 }
 
 .convert-button {
-    background-color: rgb(49, 49, 49);
-    color: #fff;
+    background-color: #ff6f00;
+    color: black;
     font-size: 15px;
     padding: 15px 25px;
-    border: 1px solid #ccc;
+    font-weight: 800;
+    border: 2px solid black;
     border-radius: 20px;
     cursor: pointer;
 }
 
 .convert-button:hover {
-    background-color: black;
+    background-color: #ff9442;
 }
+
+.spinner {
+    display: block;
+    margin: 20px auto; /* Center the spinner */
+    width: 50px; /* Adjust width and height as needed */
+    height: 50px;
+  }
+  
